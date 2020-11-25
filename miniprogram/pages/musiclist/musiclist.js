@@ -1,4 +1,6 @@
 // pages/musiclist/musiclist.js
+
+
 Page({
 
   /**
@@ -32,9 +34,17 @@ Page({
           name: pl.name
         }
       })
-      //this._setMusiclist()
+      this._setMusiclist()
       wx.hideLoading()
     })
+  },
+
+  /**
+   * 将加载出来的歌曲存放在本地缓存
+   */
+  _setMusiclist(){
+    //同步存
+    wx.setStorageSync('musiclist', this.data.musiclist)
   },
 
   /**

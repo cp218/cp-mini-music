@@ -1,7 +1,9 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
-cloud.init()
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 
 //引入云数据库
 const db = cloud.database()
@@ -10,8 +12,10 @@ const rp = require('request-promise');
 //接口获取音乐数据
 //const URL = "http://musicapi.xiecheng.live/personalized"
 //const URL = "http://u-to-world.com:3000/personalized"
-//网易云
-const URL = "http://neteasecloudmusicapi.zhaoboy.com/personalized"
+//网易云API接口
+//const URL = "http://neteasecloudmusicapi.zhaoboy.com/personalized"
+//本地ngrok
+const URL = "http://music.free.idcfengye.com/personalized"
 //数据集合
 const playlistCollection = db.collection('playlist')
 //最大数据限制
